@@ -6,6 +6,13 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
+                  @if(session('status'))
+                <div>
+                    <div class="alert alert-success ">
+                        {{session('status')}}
+                    </div>
+                </div>
+                @endif
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">

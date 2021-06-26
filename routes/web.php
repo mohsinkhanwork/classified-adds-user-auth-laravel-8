@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +23,21 @@ Route::get('/', function() {
 });
 
 
-Route::get('/home', function() {
-    return view('home');
+Route::get('/welcome', function() {
+    return view('welcome');
 });
 
+
+Route::get('/home', 'HomeController@index');
+
+Route::get('/Dashboard', 'DashboardController@index' );
+
+//admin
+
+
+Route::group(['prefix'=>'auth'], function() {
+    Route::resource('/category', 'CategoryController');
+});
 
 
 // Auth::routes();
