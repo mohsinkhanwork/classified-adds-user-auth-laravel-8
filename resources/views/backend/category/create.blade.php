@@ -15,7 +15,7 @@
 
 			  <div class="form-group">
 			    <label for="name">Name</label>
-			    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" id="exampleInputEmail1" placeholder="Name of Category">
+			    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"  placeholder="Name of Category">
 			    <span><br></span>
 					@error('name')
 					<span class="invalid-feedback" role="alert">

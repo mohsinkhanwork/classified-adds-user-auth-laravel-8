@@ -21,7 +21,7 @@ class CategoryController extends Controller
     public function index()
     {
         
-        $categories = Category::latest()->paginate(10);
+        $categories = Category::orderBy('id')->latest()->paginate(10);
         return view('backend.category.index', compact('categories'))->with('i', (request()->input('page', 1) -1) * 5);;
         
     }
@@ -53,7 +53,7 @@ class CategoryController extends Controller
         'slug'=>Str::slug($name)
         ]);
 
-        return redirect()->route('category.index');
+        return redirect()->route('category.index')->with('message', 'category created successfully');
 
     }
 
@@ -99,7 +99,7 @@ class CategoryController extends Controller
         }
             $category->update(['name'=>$request->name]);
 
-            return redirect()->route('category.index');
+            return redirect()->route('category.index')->with('message', 'category updated successfully');;
 
 
     }
@@ -119,7 +119,7 @@ class CategoryController extends Controller
             // code...
         }
 
-        return back();
+        return back()->with('message', 'category deleted successfully');
 
 
         
